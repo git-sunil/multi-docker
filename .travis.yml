@@ -9,15 +9,15 @@ script:
   - docker run -e CI=true dockersunil/react-test npm test -- --coverage
 
 after_success:
-  - docker build -t dockersunil/multi-client ./client
-  - docker build -t dockersunil/multi-nginx ./nginx
-  - docker build -t dockersunil/multi-server ./server
-  - docker build -t dockersunil/multi-worker ./worker
+  - docker build -t dockersunil/multi-container/multi-client ./client
+  - docker build -t dockersunil/multi-container/multi-nginx ./nginx
+  - docker build -t dockersunil/multi-container/multi-server ./server
+  - docker build -t dockersunil/multi-container/multi-worker ./worker
 
   # Login to Docker CLI
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
   # Take those images and push them to Docker Hub
-  - docker push dockersunil/multi-client
-  - docker push dockersunil/multi-nginx
-  - docker push dockersunil/multi-server
-  - docker push dockersunil/multi-worker
+  - docker push dockersunil/multi-container/multi-client
+  - docker push dockersunil/multi-container/multi-nginx
+  - docker push dockersunil/multi-container/multi-server
+  - docker push dockersunil/multi-container/multi-worker
