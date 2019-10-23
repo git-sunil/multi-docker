@@ -1,10 +1,5 @@
 pipeline {
-  agent {
-    dockerfile {
-      filename 'Dockerfile.dev'
-    }
-
-  }
+  agent any
   stages {
     stage('before_install') {
       steps {
