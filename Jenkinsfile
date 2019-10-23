@@ -1,10 +1,5 @@
 pipeline {
-  agent {
-    docker {
-      image 'dockersunil/react-test'
-    }
-
-  }
+  agent none
   stages {
     stage('before_install') {
       steps {
