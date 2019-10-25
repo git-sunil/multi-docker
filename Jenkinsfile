@@ -8,12 +8,12 @@ pipeline{
         }
         stage('before_install:'){
             steps{
-                sh script: 'docker build -t dockersunil/react-test -f ./client/Dockerfile.dev ./client'
+                sh script: 'sudo docker build -t dockersunil/react-test -f ./client/Dockerfile.dev ./client'
             }
         }
         stage('script:'){
             steps{
-                sh script: 'docker run -e CI=true dockersunil/react-test npm test -- --coverage'
+                sh script: 'sudo docker run -e CI=true dockersunil/react-test npm test -- --coverage'
             }
         }
     }
