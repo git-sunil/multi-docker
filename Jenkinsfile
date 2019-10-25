@@ -2,17 +2,17 @@ pipeline{
     agent any
     stages{
         stage('Git Checkout'){
-            step{
+            steps{
                 git 'https://github.com/git-sunil/multi-docker.git'
             }
         }
         stage('before_install:'){
-            step{
+            steps{
                 sh script: 'docker build -t dockersunil/react-test -f ./client/Dockerfile.dev ./client'
             }
         }
         stage('script:'){
-            step{
+            steps{
                 sh script: 'docker run -e CI=true dockersunil/react-test npm test -- --coverage'
             }
         }
